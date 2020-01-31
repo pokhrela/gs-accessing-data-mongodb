@@ -18,6 +18,11 @@ public class AccessingDataMongodbApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
+    MongoClientURI uri = new MongoClientURI(
+    "mongodb+srv://aashish:<iigitigi>@cluster0-eespn.mongodb.net/test?retryWrites=true&w=majority");
+
+    MongoClient mongoClient = new MongoClient(uri);
+    MongoDatabase database = mongoClient.getDatabase("test");
     repository.deleteAll();
 
     // save a couple of customers
